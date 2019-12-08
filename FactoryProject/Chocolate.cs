@@ -11,7 +11,7 @@ namespace FactoryProject
 
 
 
-
+        //Hello my name is Stanislav 
         enum Kind
         {
             Dark, White, Milk, Almond, Hazelnut
