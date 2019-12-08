@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
+    //Just a comment
     class Factory
     {
         private string name;
