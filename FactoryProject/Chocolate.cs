@@ -8,7 +8,7 @@ namespace FactoryProject
 {
     class Chocolate
     {
-
+        //Enums for chocolate names is a good idea 
         enum Kind
         {
             Dark, White, Milk, Almond, Hazelnut
