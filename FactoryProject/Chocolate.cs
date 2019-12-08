@@ -8,10 +8,13 @@ namespace FactoryProject
 {
     class Chocolate
     {
-
+        enum Peri
+        {
+            Keep, It, Simple, keep, it, Safe
+        }
         enum Kind
         {
-            Dark, White, Milk, Almond, Hazelnut
+            Dark
         }
         private string name;
 
