@@ -9,9 +9,6 @@ namespace FactoryProject
     class Chocolate
     {
 
-
-
-        //Hello my name is Stanislav 
         enum Kind
         {
             Dark, White, Milk, Almond, Hazelnut
