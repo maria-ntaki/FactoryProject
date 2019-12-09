@@ -9,7 +9,7 @@ namespace FactoryProject
     class Offer
     {
 		private double price;
-
+		//sxolio
 		public double Price
 		{
 			get { return price; }
