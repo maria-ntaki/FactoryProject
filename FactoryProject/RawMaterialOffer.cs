@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    class Offer
+    class RawMaterialOffer
     {
 		private double price;
 
@@ -16,12 +16,12 @@ namespace FactoryProject
 			set { price = value; }
 		}
 
-		private double quantity;
+		private double quality;
 
-		public double Quality
+		public double Quality //quality should be GET only and derive from amount/price formula 
 		{
-			get { return quantity; }
-			set { quantity = value; }
+			get { return quality; }
+			set { quality = value; }
 		}
 
 		private double amount;
@@ -34,11 +34,11 @@ namespace FactoryProject
 
 		public Supplier SupplierRelated { get; set; }
 
-		public Offer(double price, double quality, double amount, Supplier supplierRelated)
+		public RawMaterialOffer(double price, double quality, double amount, Supplier supplierRelated)
 		{
 			Price = price;
 			Quality = quality;
-			Amount = amount; //in kgs
+			Amount = amount; //in units
 			SupplierRelated = supplierRelated;
 		}
 	}
