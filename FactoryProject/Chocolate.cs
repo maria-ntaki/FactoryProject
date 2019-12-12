@@ -8,38 +8,20 @@ namespace FactoryProject
 {
     class Chocolate
     {
-        enum Peri
-        {
-            Keep, It, Simple, keep, it, Safe
-        }
-        enum Kind
-        {
-            Dark
-        }
-        private string name;
+        
+        private ChocoKind kind;
 
-        public string Name
+        private int amount; 
+        public ChocoKind Kind { get; set; }
+        public int Amount { get; set; }
+        public DateTime ProductionDate { get; private set; }
+
+        public Chocolate(ChocoKind name, int amount)
         {
-            get { return name; }
-            set { name = value; }
+            Kind = name;
+            Amount = amount;
+            ProductionDate = DateTime.Now;
         }
-        private double price;
-        public double Price
-        {
-            get { return price; }
-            set { price = value; }
-        }
-        private double rawMaterial;
-        public double RawMaterial
-        {
-            get { return rawMaterial; }
-            set { rawMaterial = value; }
-        }
-        public Chocolate(string name, double price, double rawmaterial)
-        {
-            Name = name;
-            Price = price;
-            RawMaterial = rawmaterial;
-        }
+
     }
 }
