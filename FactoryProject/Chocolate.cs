@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
+    enum Kind
+    {
+        Dark, White, Milk, Almond, Hazelnut
+    }
     class Chocolate
     {
-        enum Peri
-        {
-            Keep, It, Simple, keep, it, Safe
-        }
-        enum Kind
-        {
-            Dark
-        }
+
         private string name;
 
         public string Name
@@ -24,22 +21,22 @@ namespace FactoryProject
             set { name = value; }
         }
         private double price;
-        public double Price
-        {
-            get { return price; }
-            set { price = value; }
-        }
-        private double rawMaterial;
-        public double RawMaterial
-        {
-            get { return rawMaterial; }
-            set { rawMaterial = value; }
-        }
-        public Chocolate(string name, double price, double rawmaterial)
+        //public double Price
+        //{
+        //    get { return price; }
+        //    set { price = value; }
+        //}
+        //private double rawMaterial;
+        //public double RawMaterial
+        //{
+        //    get { return rawMaterial; }
+        //    set { rawMaterial = value; }
+        //}
+        public Chocolate(string name) //, double price, double rawmaterial
         {
             Name = name;
-            Price = price;
-            RawMaterial = rawmaterial;
+            //Price = price;
+            //RawMaterial = rawmaterial;
         }
     }
 }

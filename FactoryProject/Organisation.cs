@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    class Organisation
+    class Organisation : IWorkplaces
     {
         public List<Factory> Factories { get; set; }
         public List<Store> Stores { get; set; }
-        public Contract ActiveContract { get; set; }
+        public List<Contract> ActiveContract { get; set; }
 
         private string name;
 
@@ -43,7 +43,7 @@ namespace FactoryProject
             // factoryRelated.RawMaterial +=
 
         }
-        public void EvaluateOffers(List<Offer> offers)
+        public void EvaluateOffers(List<RawMaterialOffer> offers)
         {
 
         }
