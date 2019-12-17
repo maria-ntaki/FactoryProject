@@ -31,10 +31,10 @@ namespace FactoryProject
         {
             RelatedOffer = offer;
             OrganisationRelated = organisation;
-            SupplierRelated = supplier;
+            SupplierRelated = offer.SupplierRelated;
+            FactoryRelated = factoryRelated;
             StartDate = startdate;
             EndDate = enddate;
-            FactoryRelated = factoryRelated;
         }
     }
 }

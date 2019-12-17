@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chocolate.cs" />
     <Compile Include="ChocolateOrder.cs" />
+    <Compile Include="ChocolateWarehouse.cs" />
     <Compile Include="Contract.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="IWorkplaces.cs" />

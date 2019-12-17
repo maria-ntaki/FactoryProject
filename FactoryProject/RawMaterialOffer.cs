@@ -24,12 +24,12 @@ namespace FactoryProject
 			set { quality = value; }
 		}
 
-		private double amount;
+		private double rawMaterialAmount;
 
-		public double Amount
+		public double RawMaterialAmount
 		{
-			get { return amount; }
-			set { amount = value; }
+			get { return rawMaterialAmount; }
+			set { rawMaterialAmount = value; }
 		}
 
 		public Supplier SupplierRelated { get; set; }
@@ -38,7 +38,7 @@ namespace FactoryProject
 		{
 			Price = price;
 			Quality = quality;
-			Amount = amount; //in units
+			RawMaterialAmount = amount; 
 			SupplierRelated = supplierRelated;
 		}
 	}
