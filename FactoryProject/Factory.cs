@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    class Factory : IWorkplaces
+    class Factory : IWorkplace
     {
         private string name;
 
@@ -24,7 +24,10 @@ namespace FactoryProject
         }
         public List<Employee> Employees { get; set; }
         public Organisation OrganisationRelated { get; set; }
-        public List<ChocolateOrder> ChocolatesStock { get; set; }
+        public ChocolateWarehouse ChocoWarehouse { get; set; }
+        public Contract ActiveContract { get; set; }
+        public List<Contract> RegisteredContracts { get; set; }
+        public double RawMaterialStock { get; set; }
 
         public Factory(string name, double rawmaterial, Organisation organisationRelated)
         {
@@ -32,10 +35,10 @@ namespace FactoryProject
             RawMaterial = rawmaterial;
             OrganisationRelated = organisationRelated;
             Employees = new List<Employee>();
-            ChocolatesStock = new List<ChocolateOrder>();
+            ChocoWarehouse = new ChocolateWarehouse(this);
         }
 
-        public void ChocolateOrderCreation()
+        public void ShipChocolateOrder(Store storeRelated)
         {
             rawMaterial--;
         }

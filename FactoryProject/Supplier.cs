@@ -16,11 +16,16 @@ namespace FactoryProject
             set { name = value; }
         }
 
-        public List<Contract> ConductedContracts { get; set; }
+        public List<RawMaterialOffer> Offers { get; set; }
         public Supplier(string name)
         {
             Name = name;
-            ConductedContracts = new List<Contract>();
+            Offers = new List<RawMaterialOffer>();
+        }
+
+        public RawMaterialOffer CreateOffer()
+        {
+            return new RawMaterialOffer(0, 0, 0, this);
         }
     }
 }

@@ -8,33 +8,33 @@ namespace FactoryProject
 {
     class ChocolateOrder
     {
-        public List<Chocolate> Chocolates { get; set; } // units of chocolate
+        public int DarkChocolates { get; set; }
+        public int WhiteChocolates { get; set; }
+        public int MilkChocolates { get; set; }
+        public int AlmondChocolates { get; set; }
+        public int PeanutChocolates { get; set; }
+        public IWorkplace Seller { get; set; }
+        public IWorkplace Receiver { get; set; }
+        public Customer Buyer { get; set; }
         private double totalPrice;
         public double TotalPrice { 
             get
             {
-                foreach (var chocolate in Chocolates)
-                {
-                    if (chocolate.Name == "Dark")
-                        totalPrice += 10;
-                    else if (chocolate.Name == "White")
-                        totalPrice += 8;
-                    else
-                        totalPrice += 5;
-                }
-                return totalPrice;
+                return (double)DarkChocolates * 0.7 + WhiteChocolates * 0.6 + MilkChocolates * 0.3 + AlmondChocolates * 0.5 + PeanutChocolates * 0.6;
             }
         }
 
-        public DateTime DateProduced { get; set; } //Property tha will help define what to sell first
 
-        //idea to keep reference to either factory or store as  Seller
-        // Store SellerReference --> can be null if order is from factory to store
-
-        public ChocolateOrder(List<Chocolate> chocolates, DateTime dateProduced)
-        {
-            Chocolates = new List<Chocolate>();
-            DateProduced = dateProduced;
+        public ChocolateOrder(int dark, int white, int milk, int almond, int peanut, Factory factoryRelated, Store storeRelated )
+        {   //Use of interfaces to group Seller/Buyer properly?
+            DarkChocolates = dark;
+            WhiteChocolates = white;
+            AlmondChocolates = almond;
+            PeanutChocolates = peanut;
+            MilkChocolates = milk;
+            Seller = factoryRelated;
+            Receiver = storeRelated;
+            Buyer = null;
         }
     }
 }

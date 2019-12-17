@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    class Store : IWorkplaces
+    class Store : IWorkplace
     {
         private string name;
 
@@ -16,24 +16,22 @@ namespace FactoryProject
             set { name = value; }
         }
         public List<Employee> Employees { get; set; }
-        public Organisation Owner { get; set; }
-        public List<ChocolateOrder> ChocolatesStock { get; set; }
+        public Organisation StoreOwner { get; set; }
+        public List<ChocolateOrder> Transactions { get; set; }
+        public ChocolateWarehouse ChocoWarehouse { get; set; }
         public Store(string name, Organisation owner)
         {
             Name = name;
-            Owner = owner;
+            StoreOwner = owner;
             Employees = new List<Employee>();
-            ChocolatesStock = new List<ChocolateOrder>();
+            ChocoWarehouse = new ChocolateWarehouse(this);
         }
 
-        public void SellChocolateOrder()
+        public void SellChocolateOrder( Customer customer)
         {
-            Console.WriteLine("What kind do you want to buy?");
-            Console.WriteLine("Do you want to add another kind in the cart??");
+
             //Creates a new ChocolateOrder , removing objects from the ChocolatesStock depending ChocolateOrderRelated.DateProduced
 
-
-            Owner.MoneyBalance += 10000;
         }
     }
 }

@@ -8,28 +8,29 @@ namespace FactoryProject
 {
     class Employee
     {
-		private string name;
+		private string firstName;
 
-		public string Name
+		public string FirstName
 		{
-			get { return name; }
-			set { name = value; }
+			get { return firstName; }
+			set { firstName = value; }
 		}
 
-		private string surName;
+		private string lastName;
 
-		public string SurName
+		public string LastName
 		{
-			get { return surName; }
-			set { surName = value; }
+			get { return lastName; }
+			set { lastName = value; }
 		}
 
-		public IWorkplaces WorkPlace { get; set; }
-		public Employee(IWorkplaces workplace, string name, string surname)
+		public List<IWorkplace> WorkPlaces { get; set; }
+		public Employee(IWorkplace workplace, string firstName, string lastName)
 		{
-			Name = name;
-			SurName = surname;
-			WorkPlace = workplace;
+			FirstName = firstName;
+			LastName = lastName;
+			WorkPlaces = new List<IWorkplace>();
+			WorkPlaces.Add(workplace);
 		}
 	}
 }
