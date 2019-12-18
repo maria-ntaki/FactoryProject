@@ -14,8 +14,7 @@ namespace FactoryProject
         public int AlmondChocolates { get; set; }
         public int PeanutChocolates { get; set; }
         public IWorkplace Seller { get; set; }
-        public IWorkplace Receiver { get; set; }
-        public Customer Buyer { get; set; }
+        public ChocoBuyers Buyer { get; set; }
         private double totalPrice;
         public double TotalPrice { 
             get
@@ -25,15 +24,15 @@ namespace FactoryProject
         }
 
 
-        public ChocolateOrder(int dark, int white, int milk, int almond, int peanut, Factory factoryRelated, Store storeRelated )
+        public ChocolateOrder(int dark, int white, int milk, int almond, int peanut, IWorkplace seller, ChocoBuyers buyer )
         {   //Use of interfaces to group Seller/Buyer properly?
             DarkChocolates = dark;
             WhiteChocolates = white;
             AlmondChocolates = almond;
             PeanutChocolates = peanut;
             MilkChocolates = milk;
-            Seller = factoryRelated;
-            Receiver = storeRelated;
+            Seller = seller;
+            Buyer = buyer;
             Buyer = null;
         }
     }
