@@ -44,8 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChocoBuyers.cs" />
+    <Compile Include="Chocolate.cs" />
     <Compile Include="ChocolateOrder.cs" />
-    <Compile Include="ChocolateWarehouse.cs" />
     <Compile Include="Contract.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />

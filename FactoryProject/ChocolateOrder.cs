@@ -8,32 +8,45 @@ namespace FactoryProject
 {
     class ChocolateOrder
     {
-        public int DarkChocolates { get; set; }
-        public int WhiteChocolates { get; set; }
-        public int MilkChocolates { get; set; }
-        public int AlmondChocolates { get; set; }
-        public int PeanutChocolates { get; set; }
+        public List<Chocolate> Chocolates { get; set; }
         public IWorkplace Seller { get; set; }
         public ChocoBuyers Buyer { get; set; }
         private double totalPrice;
         public double TotalPrice { 
             get
             {
-                return (double)DarkChocolates * 0.7 + WhiteChocolates * 0.6 + MilkChocolates * 0.3 + AlmondChocolates * 0.5 + PeanutChocolates * 0.6;
+                double output = 0;
+                if(Chocolates.Count != 0 )
+                    foreach (var chocolate in Chocolates)
+                    {
+                        if (chocolate.ChocolateKind == Kind.Almond)
+                            output += 5;
+                        else if (chocolate.ChocolateKind == Kind.Dark)
+                            output += 7;
+                        else if (chocolate.ChocolateKind == Kind.Milk)
+                            output += 6;
+                        else if (chocolate.ChocolateKind == Kind.Peanut)
+                            output += 5.5;
+                        else
+                            output += 8;
+                    }
+                return output;
             }
         }
 
 
-        public ChocolateOrder(int dark, int white, int milk, int almond, int peanut, IWorkplace seller, ChocoBuyers buyer )
+        public ChocolateOrder(List<Chocolate> chocolates, IWorkplace seller, ChocoBuyers buyer )
         {   //Use of interfaces to group Seller/Buyer properly?
-            DarkChocolates = dark;
-            WhiteChocolates = white;
-            AlmondChocolates = almond;
-            PeanutChocolates = peanut;
-            MilkChocolates = milk;
-            Seller = seller;
-            Buyer = buyer;
-            Buyer = null;
+            if (chocolates.Count != 0)
+            {
+                Chocolates = chocolates;
+                Seller = seller;
+                Buyer = buyer;
+            }
+            else
+            {
+                throw new Exception("Order cannot must contain at least 1 chocolate!");
+            }
         }
     }
 }
