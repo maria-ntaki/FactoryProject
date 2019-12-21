@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    class Organisation : IWorkplace
+    class Organisation 
     {
         public List<Factory> Factories { get; set; }
         public List<Store> Stores { get; set; }
         public List<Contract> ContractsConducted { get; set; }
-        public List<Employee> Employees { get; set; }
 
         private string name;
 
