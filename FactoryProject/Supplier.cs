@@ -34,19 +34,30 @@ namespace FactoryProject
 
 		public Supplier(string firstName, string lastName,string companyWork)
 		{
-			Name = firstName;
+			FirstName = firstName;
 			LastName = lastName;
 			CompanyWork = companyWork;
 		}
 
 		public List<Contract> ConductedContracts { get; set; }
 
-		public List<Offer> Offers { get ; set; }
+		//public List<Offer> Offers { get ; set; }
 
-		
-		public RawMaterialOrder OrderMaterial()
+		public RawMaterialOrder OrderMaterial(double quantity ,double price)
 		{
+			//New Order Material
+			RawMaterialOrder newOrder = new RawMaterialOrder(quantity, price);
+			return newOrder;
 		}
+		public ChocolateOrder OrderChocolate(List<Chocolate> chocolates,ChocoBuyers buyer)
+		{
+			//New Order Chocolate
+			ChocolateOrder newOrder = new ChocolateOrder(chocolates, this, buyer);
+			return newOrder;
+		}
+
+	
+		
 	
 
 		 

@@ -9,7 +9,6 @@ namespace FactoryProject
     class RawMaterialOffer
     {
 		private double price;
-		//sxolioz
 		public double Price
 		{
 			get { return price; }

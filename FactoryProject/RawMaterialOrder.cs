@@ -28,9 +28,9 @@ namespace FactoryProject
             set { price = value; }
         }
 
-        public RawMaterialOrder( double rawMaterial, double price)
+        public RawMaterialOrder(double rawMaterial, double price)
         {
-            RawMaterial = rawmaterial;
+            RawMaterial = rawMaterial;
             Price = price;
         }
     }
