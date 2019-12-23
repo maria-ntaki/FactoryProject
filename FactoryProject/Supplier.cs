@@ -45,7 +45,7 @@ namespace FactoryProject
 
 		public RawMaterialOrder OrderMaterial()
 		{
-			return new RawMaterialOrder()
+			ordernew = new Raw
 		}
 
 
