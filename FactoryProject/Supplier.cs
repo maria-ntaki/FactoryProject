@@ -8,18 +8,47 @@ namespace FactoryProject
 {
     class Supplier
 	{
-		private string name;
+		private string firstName;
 
-		public string Name
+		public string FirstName
 		{
-			get { return name; }
-			set { name = value; }
+			get { return firstName; }
+			set { firstName = value; }
+		}
+
+		private string lastName;
+
+		public string LastName
+		{
+			get { return lastName; }
+			set { lastName = value; }
+		}
+
+		private string companyWork;
+
+		public string CompanyWork
+		{
+			get { return companyWork; }
+			set { companyWork = value; }
+		}
+
+		public Supplier(string firstName, string lastName,string companyWork)
+		{
+			Name = firstName;
+			LastName = lastName;
+			CompanyWork = companyWork;
 		}
 
 		public List<Contract> ConductedContracts { get; set; }
-		public Supplier(string name)
+
+		public List<Offer> Offers { get ; set; }
+
+		public RawMaterialOrder OrderMaterial()
 		{
-			Name = name;
+			return new RawMaterialOrder()
 		}
+
+
+		 
 	}
 }
