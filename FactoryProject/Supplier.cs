@@ -44,10 +44,10 @@ namespace FactoryProject
 		public List<Offer> Offers { get ; set; }
 
 		
-	//	public RawMaterialOrder OrderMaterial()
-	//	{
-	//	}
-	//
+		public RawMaterialOrder OrderMaterial()
+		{
+		}
+	
 
 		 
 	}
