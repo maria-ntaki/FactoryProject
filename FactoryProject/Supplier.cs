@@ -43,11 +43,11 @@ namespace FactoryProject
 
 		public List<Offer> Offers { get ; set; }
 
-		public RawMaterialOrder OrderMaterial()
-		{
-			ordernew = new Raw
-		}
-
+		
+	//	public RawMaterialOrder OrderMaterial()
+	//	{
+	//	}
+	//
 
 		 
 	}
