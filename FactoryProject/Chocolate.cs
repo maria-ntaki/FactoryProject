@@ -6,37 +6,38 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
+    public enum Kind { White, Dark, Milk, Peanut, Almond}
     class Chocolate
     {
+        public Kind ChocolateKind { get; set; }
+        public DateTime DateProduced { get; set; }
+        //public double Price 
+        //{ 
+        //    get
+        //    {
+        //        if (ChocolateKind == Kind.White)
+        //            return 5;
+        //        else if (ChocolateKind == Kind.Peanut)
+        //            return 6;
+        //        else if (ChocolateKind == Kind.Milk)
+        //            return 7;
+        //        else if (ChocolateKind == Kind.Dark)
+        //            return 4;
+        //        else //(ChocolateKind == Kind.Almond)
+        //            return 8;
+        //    }
+        //}
 
-        enum Kind
-        {
-            Dark, White, Milk, Almond, Hazelnut
+        public Chocolate(Kind chocoKind)
+        { //Constructor used for modeling the orders
+            ChocolateKind = chocoKind;
         }
-        private string name;
 
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
+        public Chocolate(Kind chocoKind, DateTime dateProduced)
+        { //constructor used when producing from factory
+            DateProduced = dateProduced;
         }
-        private double price;
-        public double Price
-        {
-            get { return price; }
-            set { price = value; }
-        }
-        private double rawMaterial;
-        public double RawMaterial
-        {
-            get { return rawMaterial; }
-            set { rawMaterial = value; }
-        }
-        public Chocolate(string name, double price, double rawmaterial)
-        {
-            Name = name;
-            Price = price;
-            RawMaterial = rawmaterial;
-        }
+
+
     }
 }

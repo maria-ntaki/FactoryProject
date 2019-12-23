@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    class Organisation
+    class Organisation 
     {
         public List<Factory> Factories { get; set; }
         public List<Store> Stores { get; set; }
-        public Contract ActiveContract { get; set; }
+        public List<Contract> ContractsConducted { get; set; }
 
         private string name;
 
@@ -20,30 +20,18 @@ namespace FactoryProject
             set { name = value; }
         }
 
-        private double moneyBalance;
-        public double MoneyBalance
-        {
-            get { return moneyBalance; }
-            set { moneyBalance = value; }
-        }
-        public Organisation(string name, double moneybalance)
+        //private double moneyBalance;
+        //public double MoneyBalance
+        //{
+        //    get { return moneyBalance; }
+        //    set { moneyBalance = value; }
+        //}
+        public Organisation(string name)
         {
             Name = name;
-            MoneyBalance = moneybalance;
         }
-        public void NewChocolateOrder(Store storeRelated)
-        {
-            // storeRelate.chocolates.Add();
 
-            MoneyBalance--;
-        }
-        public void NewRawMaterialOrder(Factory factoryRelated)
-        {
-            //reference of supplier should be saved in activecontract if needed
-            // factoryRelated.RawMaterial +=
-
-        }
-        public void EvaluateOffers(List<Offer> offers)
+        public void EvaluateOffers(List<RawMaterialOffer> offers)
         {
 
         }
