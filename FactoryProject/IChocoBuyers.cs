@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    interface ChocoBuyers
+    interface IChocoBuyers
     {
         string Name { get; }
     }

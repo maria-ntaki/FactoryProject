@@ -11,6 +11,7 @@ namespace FactoryProject
         public List<Factory> Factories { get; set; }
         public List<Store> Stores { get; set; }
         public List<Contract> ContractsConducted { get; set; }
+        public List<Supplier> Suppliers { get; set; }
 
         private string name;
 

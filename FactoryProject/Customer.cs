@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    class Customer
+    class Customer : IChocoBuyers
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -17,7 +17,7 @@ namespace FactoryProject
                 return $"{FirstName} {LastName}";
             }
         }
-        List<ChocolateOrder> ChocoOrders { get; set; }
+        public List<ChocolateOrder> ChocoOrders { get; set; }
         public double TotalExpenses
         {
             get

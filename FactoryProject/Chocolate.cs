@@ -38,6 +38,58 @@ namespace FactoryProject
             DateProduced = dateProduced;
         }
 
+        public static List<Chocolate> CreateChocolatesRequest()
+        {
+            List<Chocolate> chocolates = new List<Chocolate>();
 
+            Console.WriteLine("How many dark chocolates do you want to order?");
+            int dark = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("How many white chocolates do you want to order?");
+            int white = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("How many milk chocolates do you want to order?");
+            int milk = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("How many almond chocolates do you want to order?");
+            int almond = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("How many peanut chocolates do you want to order?");
+            int peanut = int.Parse(Console.ReadLine());
+
+
+            for (int i = 0; i < dark; i++)
+            {
+                Chocolate newDarkChoco = new Chocolate(Kind.Dark);
+                chocolates.Add(newDarkChoco);
+            }
+
+            for (int i = 0; i < white; i++)
+            {
+                Chocolate newWhiteChoco = new Chocolate(Kind.White);
+                chocolates.Add(newWhiteChoco);
+            }
+
+            for (int i = 0; i < milk; i++)
+            {
+                Chocolate newMilkChoco = new Chocolate(Kind.Milk);
+                chocolates.Add(newMilkChoco);
+            }
+
+            for (int i = 0; i < almond; i++)
+            {
+                Chocolate newAlmondChoco = new Chocolate(Kind.Almond);
+                chocolates.Add(newAlmondChoco);
+            }
+
+            for (int i = 0; i < peanut; i++)
+            {
+                Chocolate newPeanutChoco = new Chocolate(Kind.Peanut);
+                chocolates.Add(newPeanutChoco);
+            }
+
+
+            return chocolates;
+        }
     }
 }

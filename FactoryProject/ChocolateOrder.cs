@@ -10,7 +10,7 @@ namespace FactoryProject
     {
         public List<Chocolate> Chocolates { get; set; }
         public IWorkplace Seller { get; set; }
-        public ChocoBuyers Buyer { get; set; }
+        public IChocoBuyers Buyer { get; set; }
         private double totalPrice;
         public double TotalPrice { 
             get
@@ -35,7 +35,7 @@ namespace FactoryProject
         }
 
 
-        public ChocolateOrder(List<Chocolate> chocolates, IWorkplace seller, ChocoBuyers buyer )
+        public ChocolateOrder(List<Chocolate> chocolates, IWorkplace seller, IChocoBuyers buyer )
         {   //Use of interfaces to group Seller/Buyer properly?
             if (chocolates.Count != 0)
             {
@@ -48,5 +48,7 @@ namespace FactoryProject
                 throw new Exception("Order cannot must contain at least 1 chocolate!");
             }
         }
+
+       
     }
 }
