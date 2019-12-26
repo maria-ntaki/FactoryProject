@@ -32,16 +32,19 @@ namespace FactoryProject
 			set { companyWork = value; }
 		}
 
+		private List<RawMaterialOffer> offers;
+		private List<Contract> conductedContracts;
+
+
 		public Supplier(string firstName, string lastName,string companyWork)
 		{
+			offers = new List<RawMaterialOffer>();
+			conductedContracts = new List<Contract>();
+
 			FirstName = firstName;
 			LastName = lastName;
 			CompanyWork = companyWork;
 		}
-
-		public List<Contract> ConductedContracts { get; set; }
-
-		//public List<Offer> Offers { get ; set; }
 
 		public RawMaterialOrder OrderMaterial(double quantity ,double price)
 		{
@@ -55,33 +58,10 @@ namespace FactoryProject
 			ChocolateOrder newOrder = new ChocolateOrder(chocolates, this, buyer);
 			return newOrder;
 		}
-
-	
-		
-	
-
-		 
+		public RawMaterialOffer CreateOffer()
+		{
+			//Create an empty Offer
+			return new RawMaterialOffer(0,0,0,this);
+		}		 
 	}
-
- //   {
-  //      private string name;
-//
- //       public string Name
- //       {
-  //          get { return name; }
-   //         set { name = value; }
-   //     }
-
- //       public List<RawMaterialOffer> Offers { get; set; }
-  //      public Supplier(string name)
-  //      {
-  //          Name = name;
-  //          Offers = new List<RawMaterialOffer>();
-  //      }
-
- //       public RawMaterialOffer CreateOffer()
-  //      {
-  //          return new RawMaterialOffer(0, 0, 0, this);
-  //      }
- //   }
 }
