@@ -17,9 +17,13 @@ namespace FactoryProject
         public float Value { get; set; }
         public DateTime ProductionDate { get; set; }
 
+        public DateTime ProductionDate { get; private set; }
+
         public Chocolate(ChocoKind name, int amount)
         {
             Kind = name;
+            Amount = amount;
+            ProductionDate = DateTime.Now;
         }
 
     }
