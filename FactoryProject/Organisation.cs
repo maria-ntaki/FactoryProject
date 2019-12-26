@@ -63,6 +63,7 @@ namespace FactoryProject
             maxQuality = quality.Max();
             maxQuantity = quantity.Max();
             //Making all values relational to max
+            //Creating grades for each offer 
             for (int i = 0; i < quality.Count; i++)
             {
                 quality[i] = quality[i] / maxQuality * 100;
@@ -71,7 +72,7 @@ namespace FactoryProject
 
                 gradesOfOffers.Add(price[i] * 1.7 + quality[i] * 1 + quantity[i] * 0.3);
             }
-
+            //chosing the best offer based on score
             int indexBestOffer = gradesOfOffers.IndexOf(gradesOfOffers.Max());
             return offers[indexBestOffer];
 
