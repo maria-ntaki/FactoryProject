@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    interface IWorkplaces
+    interface IWorkplace
     {
         string Name { get; set; }
     }

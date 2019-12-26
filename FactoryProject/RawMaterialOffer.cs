@@ -8,9 +8,11 @@ namespace FactoryProject
 {
     class RawMaterialOffer
     {
+
 		private double pricePerKilo;
 		//sxolioz
 		public double PricePerKilo
+
 		{
 			get { return pricePerKilo; }
 			set
@@ -35,12 +37,12 @@ namespace FactoryProject
 			}
 		}
 
-		private double amount;
+		private double rawMaterialAmount;
 
-		public double Amount
+		public double RawMaterialAmount
 		{
-			get { return amount; }
-			set { amount = value; }
+			get { return rawMaterialAmount; }
+			set { rawMaterialAmount = value; }
 		}
 		public Supplier SupplierRelated { get; set; }
 

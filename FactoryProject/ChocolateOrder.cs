@@ -8,33 +8,47 @@ namespace FactoryProject
 {
     class ChocolateOrder
     {
-        public List<Chocolate> Chocolates { get; set; } // units of chocolate
+        public List<Chocolate> Chocolates { get; set; }
+        public IWorkplace Seller { get; set; }
+        public IChocoBuyers Buyer { get; set; }
         private double totalPrice;
         public double TotalPrice { 
             get
             {
-                foreach (var chocolate in Chocolates)
-                {
-                    if (chocolate.Name == "Dark")
-                        totalPrice += 10;
-                    else if (chocolate.Name == "White")
-                        totalPrice += 8;
-                    else
-                        totalPrice += 5;
-                }
-                return totalPrice;
+                double output = 0;
+                if(Chocolates.Count != 0 )
+                    foreach (var chocolate in Chocolates)
+                    {
+                        if (chocolate.ChocolateKind == Kind.Almond)
+                            output += 5;
+                        else if (chocolate.ChocolateKind == Kind.Dark)
+                            output += 7;
+                        else if (chocolate.ChocolateKind == Kind.Milk)
+                            output += 6;
+                        else if (chocolate.ChocolateKind == Kind.Peanut)
+                            output += 5.5;
+                        else
+                            output += 8;
+                    }
+                return output;
             }
         }
 
-        public DateTime DateProduced { get; set; } //Property tha will help define what to sell first
 
-        //idea to keep reference to either factory or store as  Seller
-        // Store SellerReference --> can be null if order is from factory to store
-
-        public ChocolateOrder(List<Chocolate> chocolates, DateTime dateProduced)
-        {
-            Chocolates = new List<Chocolate>();
-            DateProduced = dateProduced;
+        public ChocolateOrder(List<Chocolate> chocolates, IWorkplace seller, IChocoBuyers buyer )
+        {   //Use of interfaces to group Seller/Buyer properly?
+            if (chocolates.Count != 0)
+            {
+                Chocolates = chocolates;
+                Seller = seller;
+                Buyer = buyer;
+            }
+            else
+            {
+                throw new Exception("Order cannot must contain at least 1 chocolate!");
+            }
         }
+
+       
     }
 }
