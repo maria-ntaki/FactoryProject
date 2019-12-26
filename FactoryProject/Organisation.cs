@@ -76,6 +76,7 @@ namespace FactoryProject
             int indexBestOffer = gradesOfOffers.IndexOf(gradesOfOffers.Max());
             return offers[indexBestOffer];
 
+
         }
     }
 }
