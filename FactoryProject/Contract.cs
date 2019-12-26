@@ -33,7 +33,7 @@ namespace FactoryProject
             OrganisationRelated = organisation;
             SupplierRelated = supplier;
             StartDate = startdate;
-            EndDate = 0;
+            EndDate = DateTime.Now;
             FactoryRelated = factoryRelated;
         }
     }
