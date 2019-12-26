@@ -36,5 +36,9 @@ namespace FactoryProject
             EndDate = enddate;
             FactoryRelated = factoryRelated;
         }
+        public void ChocolateOrder()
+        {
+
+        }
     }
 }

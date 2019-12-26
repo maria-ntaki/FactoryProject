@@ -6,37 +6,21 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    enum Kind
-    {
-        Dark, White, Milk, Almond, Hazelnut
-    }
     class Chocolate
     {
+        
+        private ChocoKind kind;
 
-        private string name;
+        private int amount; 
+        public ChocoKind Kind { get; set; }
+        public int Amount { get; set; }
+        public float Value { get; set; }
+        public DateTime ProductionDate { get; set; }
 
-        public string Name
+        public Chocolate(ChocoKind name, int amount)
         {
-            get { return name; }
-            set { name = value; }
+            Kind = name;
         }
-        private double price;
-        //public double Price
-        //{
-        //    get { return price; }
-        //    set { price = value; }
-        //}
-        //private double rawMaterial;
-        //public double RawMaterial
-        //{
-        //    get { return rawMaterial; }
-        //    set { rawMaterial = value; }
-        //}
-        public Chocolate(string name) //, double price, double rawmaterial
-        {
-            Name = name;
-            //Price = price;
-            //RawMaterial = rawmaterial;
-        }
+
     }
 }
