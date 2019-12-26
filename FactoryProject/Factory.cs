@@ -51,7 +51,6 @@ namespace FactoryProject
         }
         public double Expenses { get; set; }
 
-
         public Factory(string name, double rawmaterial, Organisation organisationRelated)
         {
             Name = name;
@@ -198,5 +197,6 @@ namespace FactoryProject
                 ChocolateWarehouse.Add(peanutChocolate);
             }
         }
+
     }
 }

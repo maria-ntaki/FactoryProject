@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
+
     public enum Kind { White, Dark, Milk, Peanut, Almond}
     class Chocolate
     {
@@ -91,5 +92,6 @@ namespace FactoryProject
 
             return chocolates;
         }
+
     }
 }

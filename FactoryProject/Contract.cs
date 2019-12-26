@@ -25,7 +25,7 @@ namespace FactoryProject
         public DateTime EndDate
         {
             get { return endDate; }
-            set { endDate = value; }
+            set { endDate = startDate.AddYears(1); }
         }
         public Contract(RawMaterialOffer offer, Organisation organisation, Supplier supplier, Factory factoryRelated, DateTime startdate, DateTime enddate)
         {
@@ -34,7 +34,6 @@ namespace FactoryProject
             SupplierRelated = offer.SupplierRelated;
             FactoryRelated = factoryRelated;
             StartDate = startdate;
-            EndDate = enddate;
         }
     }
 }
