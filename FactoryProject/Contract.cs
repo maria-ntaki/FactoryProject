@@ -8,9 +8,10 @@ namespace FactoryProject
 {
     class Contract
     {
-        public Offer ChosenOffer { get; set; }
+        public RawMaterialOffer RelatedOffer { get; set; }
         public Organisation OrganisationRelated { get; set; }
         public Supplier SupplierRelated { get; set; }
+        public Factory FactoryRelated { get; set; }
 
         private DateTime startDate;
         public DateTime StartDate
@@ -24,15 +25,16 @@ namespace FactoryProject
         public DateTime EndDate
         {
             get { return endDate; }
-            set { endDate = value; }
+            set { endDate = startDate.AddYears(1); }
         }
-        public Contract(Offer offer, Organisation organisation, Supplier supplier, DateTime startdate, DateTime enddate)
+        public Contract(RawMaterialOffer offer, Organisation organisation, Supplier supplier, Factory factoryRelated, DateTime startdate, DateTime enddate)
         {
-            ChosenOffer = offer;
+            RelatedOffer = offer;
             OrganisationRelated = organisation;
             SupplierRelated = supplier;
             StartDate = startdate;
-            EndDate = enddate;
+            EndDate = DateTime.Now;
+            FactoryRelated = factoryRelated;
         }
     }
 }

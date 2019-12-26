@@ -14,6 +14,9 @@ namespace FactoryProject
         private int amount; 
         public ChocoKind Kind { get; set; }
         public int Amount { get; set; }
+        public float Value { get; set; }
+        public DateTime ProductionDate { get; set; }
+
         public DateTime ProductionDate { get; private set; }
 
         public Chocolate(ChocoKind name, int amount)

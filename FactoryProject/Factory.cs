@@ -34,9 +34,20 @@ namespace FactoryProject
             Employees = new List<Employee>();
         }
 
-        void ChocolateCreation()
+        public void  ChocolateCreation(int numberToProduce, string nameOfChoco)
         {
-            rawMaterial--;
+            var chocoWarehouse = new ChocoWareHouse() { };
+            float costOfRaw = 0.5;
+
+            var choco = new Chocolate() { Kind = (nameOfChoco) , Amount = numberToProduce };
+            choco.ProductionDate = DateTime.Now;
+            var x = RawMaterial - numberToProduce * costOfRaw;
+            rawMaterial = x;
+            choco.Value = 
+
+            chocoWarehouse.ChocolateStored.Add(choco);
+
         }
+
     }
 }

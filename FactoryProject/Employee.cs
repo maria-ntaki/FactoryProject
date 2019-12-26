@@ -23,10 +23,13 @@ namespace FactoryProject
 			get { return surName; }
 			set { surName = value; }
 		}
-		public Employee(string name, string surname)
+
+		public IWorkplaces WorkPlace { get; set; }
+		public Employee(IWorkplaces workplace, string name, string surname)
 		{
 			Name = name;
 			SurName = surname;
+			WorkPlace = workplace;
 		}
 	}
 }

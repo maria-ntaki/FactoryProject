@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ChocoEnum.cs" />
     <Compile Include="Chocolate.cs" />
+    <Compile Include="ChocoWareHouse.cs" />
     <Compile Include="Contract.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Factory.cs" />
