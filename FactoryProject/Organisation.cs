@@ -43,8 +43,37 @@ namespace FactoryProject
             // factoryRelated.RawMaterial +=
 
         }
-        public void EvaluateOffers(List<RawMaterialOffer> offers)
+        public static RawMaterialOffer BestOffer(List<RawMaterialOffer> offers)
         {
+            List<double> quality = new List<double>() { };
+            List<double> price = new List<double>() { };
+            List<double> quantity = new List<double>() { };
+            List<double> gradesOfOffers = new List<double>() { };
+            double maxQuality, maxPrice, maxQuantity;
+
+            //Populating lists of quality, price etc
+            foreach (var offer in offers)
+            {
+                quality.Add(offer.Quality);
+                price.Add(Math.Pow(offer.Price, -1));
+                quantity.Add(Math.Pow(offer.Quantity, -1));
+            }
+            //finding max values
+            maxPrice = price.Max();
+            maxQuality = quality.Max();
+            maxQuantity = quantity.Max();
+            //Making all values relational to max
+            for (int i = 0; i < quality.Count; i++)
+            {
+                quality[i] = quality[i] / maxQuality * 100;
+                quantity[i] = quantity[i] / maxQuantity * 100;
+                price[i] = price[i] / maxPrice * 100;
+
+                gradesOfOffers.Add(price[i] * 1.7 + quality[i] * 1 + quantity[i] * 0.3);
+            }
+
+            int indexBestOffer = gradesOfOffers.IndexOf(gradesOfOffers.Max());
+            return offers[indexBestOffer];
 
         }
     }
