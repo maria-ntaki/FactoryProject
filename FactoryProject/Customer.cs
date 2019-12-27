@@ -43,5 +43,42 @@ namespace FactoryProject
             ChocoOrders = new List<ChocolateOrder>();
             ChocoOrders.Add(order);
         }
+
+        public List<Chocolate> CreateOrder(int dark, int white, int milk, int peanut, int almond)
+        {
+            List<Chocolate> newOrder = new List<Chocolate>();
+
+            for (int i = 0; i < dark; i++)
+            {
+                Chocolate newDarkChoco = new Chocolate(Kind.Dark);
+                newOrder.Add(newDarkChoco);
+            }
+
+            for (int i = 0; i < white; i++)
+            {
+                Chocolate newWhiteChoco = new Chocolate(Kind.White);
+                newOrder.Add(newWhiteChoco);
+            }
+
+            for (int i = 0; i < milk; i++)
+            {
+                Chocolate newMilkChoco = new Chocolate(Kind.Milk);
+                newOrder.Add(newMilkChoco);
+            }
+
+            for (int i = 0; i < peanut; i++)
+            {
+                Chocolate newPeanutChoco = new Chocolate(Kind.Peanut);
+                newOrder.Add(newPeanutChoco);
+            }
+            for (int i = 0; i < almond; i++)
+            {
+                Chocolate newAlmondChoco = new Chocolate(Kind.Almond);
+                newOrder.Add(newAlmondChoco);
+            }
+
+            return newOrder;
+
+        }
     }
 }

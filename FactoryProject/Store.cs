@@ -20,6 +20,7 @@ namespace FactoryProject
         public List<ChocolateOrder> Transactions { get; set; } //Should keep track of chocolate orders with customers
         public List<Chocolate> Chocolates { get; set; }
         public double Income { get; set; }
+        public List<Customer> Customers { get; set; }
         public Store(string name, Organisation owner)
         {
             Name = name;
@@ -129,6 +130,16 @@ namespace FactoryProject
             ChocolateOrder newOrder = new ChocolateOrder(chocolatesList, this, customer);
             customer.ChocoOrders.Add(newOrder);
             this.Transactions.Add(newOrder);
+
+            bool customerExists = false;
+            foreach (var existingCustomer in Customers)
+            {
+                if (existingCustomer.Equals(customer))
+                    customerExists = true;
+            }
+
+            if (!customerExists)
+                Customers.Add(customer);
 
             Income += newOrder.TotalPrice;
 

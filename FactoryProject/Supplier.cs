@@ -52,12 +52,12 @@ namespace FactoryProject
 			RawMaterialOrder newOrder = new RawMaterialOrder(quantity, price);
 			return newOrder;
 		}
-		public ChocolateOrder OrderChocolate(List<Chocolate> chocolates,ChocoBuyers buyer)
-		{
-			//New Order Chocolate
-			ChocolateOrder newOrder = new ChocolateOrder(chocolates, this, buyer);
-			return newOrder;
-		}
+		//public ChocolateOrder OrderChocolate(List<Chocolate> chocolates,IChocoBuyers buyer)
+		//{
+		//	//New Order Chocolate
+		//	ChocolateOrder newOrder = new ChocolateOrder(chocolates, this, buyer);
+		//	return newOrder;
+		//}
 		public RawMaterialOffer CreateOffer()
 		{
 			//Create an empty Offer

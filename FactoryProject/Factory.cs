@@ -21,6 +21,7 @@ namespace FactoryProject
         public List<Chocolate> ChocolateWarehouse { get; set; } //Chocolate Warehouse
         public Contract ActiveContract { get; set; } //Contract to reference or resupply
         public List<Contract> RegisteredContracts { get; set; } //Contracts record
+        public List<ChocolateOrder> OrdersConducted { get; set; }
         private double rawMaterial;
         public double RawMaterial
         {
@@ -40,8 +41,7 @@ namespace FactoryProject
                 }
                 else if (value < 1000) //1000 represent 10% of 10000 -> thats when resupplying is made, incresing amount and expenses as well
                 {
-                    rawMaterial += ActiveContract.RelatedOffer.RawMaterialAmount;//Contract holds the "transaction" data to be transfered
-                    Expenses += ActiveContract.RelatedOffer.PricePerKilo;
+                    Resuplpy();
                 }
                 else
                 {
@@ -49,6 +49,8 @@ namespace FactoryProject
                 }
             }
         }
+
+
         public double Expenses { get; set; }
 
         public Factory(string name, double rawmaterial, Organisation organisationRelated)
@@ -58,6 +60,7 @@ namespace FactoryProject
             OrganisationRelated = organisationRelated;
             Employees = new List<Employee>();
             ChocolateWarehouse = new List<Chocolate>();
+            OrdersConducted = new List<ChocolateOrder>();
         }
 
         /// <summary>
@@ -148,8 +151,9 @@ namespace FactoryProject
                 ChocolateWarehouse.Remove(item);
             }
 
-
-            return new ChocolateOrder(chocolatesList, this, storeRelated);//Returning valid representation of factory data
+            ChocolateOrder newOrder = new ChocolateOrder(chocolatesList, this, storeRelated);
+            OrdersConducted.Add(newOrder);
+            return newOrder; 
 
 
         }
@@ -196,6 +200,12 @@ namespace FactoryProject
                 RawMaterial -= 0.26;
                 ChocolateWarehouse.Add(peanutChocolate);
             }
+        }
+
+        public void Resuplpy()
+        {
+            rawMaterial += ActiveContract.RelatedOffer.RawMaterialAmount;//Contract holds the "transaction" data to be transfered
+            Expenses += ActiveContract.RelatedOffer.PricePerKilo;
         }
 
     }
