@@ -30,6 +30,10 @@ namespace FactoryProject
         public Organisation(string name)
         {
             Name = name;
+            Factories = new List<Factory>();
+            Stores = new List<Store>();
+            ContractsConducted = new List<Contract>();
+            Suppliers = new List<Supplier>();
         }
 
         public void NewRawMaterialOrder(Factory factoryRelated)

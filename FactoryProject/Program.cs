@@ -10,35 +10,59 @@ namespace FactoryProject
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome");
+            Organisation company = new Organisation("QuarkSoft Business");
+            Factory demoFactory = new Factory("DemoFactory", 2000, company);
+            company.Factories.Add(demoFactory);
+            Supplier demoSupplier = new Supplier("DemoFirstName", "DemoLastName", "DemoBusinessName");
+            company.Suppliers.Add(demoSupplier);
+            Store demoStore = new Store("superDemoShop", company);
+            company.Stores.Add(demoStore);
 
-            Console.WriteLine("Which entity would you like to work with?");
 
-            Console.WriteLine("1. Factory");
-            //Prints a list of all factories
-            //Prompts user to bind an element(factory) to work with
-            //Prints all data for specific factory
-            //Option to "force" rawMaterial resupply 
-            //Option to "force" chocolate production
-            Console.WriteLine("2. Organiastion");
-            //Prints full organization info
-            //Option to print List of all contracts
-            //Option to print List of all factories
-            //Option to print List of all stores
-            //Option to print List of all contracts
-            Console.WriteLine("3. Store");
-            //Prints a list of all stores
-            //Prompts user to bind an element(store) to work with
-            //Prints all data for specific store
-            //Option to "force" chocolate resupply 
-            
-            Console.WriteLine("4. Customer");
-            //Prints all customers or creates one
-            //Binds one
-            //Forms an order
-            //Prints all stores
-            //Asks which store to make the order from
-            //done
+            bool exit = false;
+            do
+            {
+                Console.Clear();
+
+                Console.WriteLine("Press 1 to work with the Administration of the organization");
+                Console.WriteLine("Press 2 to work with a factory of the organization");
+                Console.WriteLine("Press 3 to work with a store of the organization");
+                Console.WriteLine("Press 4 to work with a customer");
+                Console.WriteLine("Press Q to exit.");
+
+                string userChoice = Console.ReadLine();
+
+                switch (userChoice)
+                {
+                    case "1":
+                        UserInterface.ManageOrganisation(company);
+                        break;
+
+                    case "2":
+                        UserInterface.ManageFactory(company);
+                        break;
+
+                    case "3":
+                        UserInterface.ManageStore(company);
+                        break;
+
+                    case "4":
+                        UserInterface.ManageCustomer(company);
+                        break;
+
+                    case "q":
+                    case "Q":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice");
+                        break;
+                }
+
+                Console.WriteLine("Actions done. Press any key to continue");
+                Console.ReadKey();
+            } while (!exit);
+
         }
     }
 }
