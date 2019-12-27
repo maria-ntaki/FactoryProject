@@ -58,10 +58,16 @@ namespace FactoryProject
 			ChocolateOrder newOrder = new ChocolateOrder(chocolates, this, buyer);
 			return newOrder;
 		}
-		public RawMaterialOffer CreateOffer()
+		public void MakeContract()
 		{
-			//Create an empty Offer
-			return new RawMaterialOffer(0,0,0,this);
+			Contract newContract = new Contract(null,null,this,null,null,null);
+			conductedContracts.Add(newContract);
+		}
+		public void CreateOffer()
+		{
+			//Create an Offer
+			RawMaterialOffer newoffer = new RawMaterialOffer(500,100,100,this);
+			offers.Add(newoffer);
 		}		 
 	}
 }
