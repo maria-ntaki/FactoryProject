@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    interface ChocoBuyers
+    public enum ChocoKind
     {
-        string Name { get; }
+            Black, White, Milk, Almound, Peanut
     }
+
 }

@@ -59,11 +59,9 @@ namespace FactoryProject
 			return newOrder;
 		}
 		public void MakeContract()
-		{
-			//Make a new Contract 
-			//Contract newContract = new Contract(null,null,this,null,null,null);
-			//conductedContracts.Add(newContract);
-		}
+    {
+    }
+
 		public void CreateOffer()
 		{
 			//Create an Offer
