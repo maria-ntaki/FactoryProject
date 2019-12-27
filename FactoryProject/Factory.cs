@@ -41,7 +41,7 @@ namespace FactoryProject
                 else if (value < 1000) //1000 represent 10% of 10000 -> thats when resupplying is made, incresing amount and expenses as well
                 {
                     rawMaterial += ActiveContract.RelatedOffer.RawMaterialAmount;//Contract holds the "transaction" data to be transfered
-                    Expenses += ActiveContract.RelatedOffer.Price;
+                    Expenses += ActiveContract.RelatedOffer.PricePerKilo;
                 }
                 else
                 {

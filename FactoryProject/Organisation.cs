@@ -32,8 +32,6 @@ namespace FactoryProject
             Name = name;
         }
 
-            MoneyBalance--;
-        }
         public void NewRawMaterialOrder(Factory factoryRelated)
         {
             //reference of supplier should be saved in activecontract if needed
@@ -53,8 +51,8 @@ namespace FactoryProject
             foreach (var offer in offers)
             {
                 quality.Add(offer.Quality);
-                price.Add(Math.Pow(offer.Price, -1));
-                quantity.Add(Math.Pow(offer.Quantity, -1));
+                price.Add(Math.Pow(offer.PricePerKilo, -1));
+                quantity.Add(Math.Pow(offer.RawMaterialAmount, -1));
             }
             //finding max values
             maxPrice = price.Max();

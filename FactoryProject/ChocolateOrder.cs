@@ -12,11 +12,12 @@ namespace FactoryProject
         public IWorkplace Seller { get; set; }
         public IChocoBuyers Buyer { get; set; }
         private double totalPrice;
-        public double TotalPrice { 
+        public double TotalPrice
+        {
             get
             {
                 double output = 0;
-                if(Chocolates.Count != 0 )
+                if (Chocolates.Count != 0)
                     foreach (var chocolate in Chocolates)
                     {
                         if (chocolate.ChocolateKind == Kind.Almond)
@@ -35,7 +36,7 @@ namespace FactoryProject
         }
 
 
-        public ChocolateOrder(List<Chocolate> chocolates, IWorkplace seller, IChocoBuyers buyer )
+        public ChocolateOrder(List<Chocolate> chocolates, IWorkplace seller, IChocoBuyers buyer)
         {   //Use of interfaces to group Seller/Buyer properly?
             if (chocolates.Count != 0)
             {
@@ -49,6 +50,6 @@ namespace FactoryProject
             }
         }
 
-       
+
     }
 }

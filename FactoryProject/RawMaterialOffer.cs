@@ -31,6 +31,8 @@ namespace FactoryProject
 				if ( value < 0 || value > 10)
 				{
 					Console.WriteLine("Quality indicator cannot exceed 10 or be less than 0");
+
+					
 				}
 				else
 					quality = value; 
@@ -50,7 +52,7 @@ namespace FactoryProject
 		{
 			Quality = quality;
 			PricePerKilo = price;
-			Amount = amount; //in units
+			RawMaterialAmount = amount; //in units
 			SupplierRelated = supplierRelated;
 		}
 	}
