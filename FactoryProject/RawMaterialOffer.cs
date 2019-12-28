@@ -48,7 +48,7 @@ namespace FactoryProject
 		}
 		public Supplier SupplierRelated { get; set; }
 
-		public RawMaterialOffer(double price, double quality, double amount, Supplier supplierRelated)
+		public RawMaterialOffer(double price, double amount, Supplier supplierRelated)
 		{
 			Quality = quality;
 			PricePerKilo = price;

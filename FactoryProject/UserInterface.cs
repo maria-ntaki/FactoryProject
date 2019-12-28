@@ -8,51 +8,6 @@ namespace FactoryProject
 {
     abstract class UserInterface
     {
-        //public static bool MainMenu(Organisation company)
-        //{
-        //    bool exit = false;
-        //    Console.Clear();
-        //    //Console.WriteLine("Which entity would you like to work with?");
-        //    Console.WriteLine("Press 1 to work with the Administration of the organization");
-        //    Console.WriteLine("Press 2 to work with a factory of the organization");
-        //    Console.WriteLine("Press 3 to work with a store of the organization");
-        //    Console.WriteLine("Press 4 to work with a customer");
-        //    Console.WriteLine("Press Q to exit.");
-
-        //    string userChoice = Console.ReadLine();
-
-        //    switch (userChoice)
-        //    {
-        //        case "1":
-        //            ManageOrganisation(company);
-        //            break;
-
-        //        case "2":
-        //            ManageFactory(company);
-        //            break;
-
-        //        case "3":
-        //            ManageStore(company);
-        //            break;
-
-        //        case "4":
-        //            ManageCustomer(company);
-        //            break;
-
-        //        case "q":
-        //        case "Q":
-        //            exit = true;
-        //            break;
-        //        default:
-        //            Console.WriteLine("Invalid choice");
-        //            break;
-        //    }
-
-        //    Console.WriteLine("Actions done. Press any key to continue");
-        //    Console.ReadKey();
-        //    return exit;
-        //}
-
         public static void ManageOrganisation(Organisation company)
         {
             bool exit = false;

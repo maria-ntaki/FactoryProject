@@ -22,6 +22,17 @@ namespace FactoryProject
         public List<Chocolate> ChocolatesStock { get; set; }
         public List<Contract> RegisteredContracts { get; set; } //Contracts record
         public List<ChocolateOrder> OrdersConducted { get; set; }
+        public Factory(string name, double rawmaterial, Organisation organisationRelated)
+        {
+            Name = name;
+            RawMaterial = rawmaterial;
+            OrganisationRelated = organisationRelated;
+            Employees = new List<Employee>();
+            OrdersConducted = new List<ChocolateOrder>();
+            RegisteredContracts = new List<Contract>();
+            ChocolatesStock = new List<Chocolate>();
+            ActiveContract = organisationRelated.ProduceContract(this);
+        }
         private double rawMaterial;
         public double RawMaterial
         {
@@ -63,14 +74,7 @@ namespace FactoryProject
             }
         }
 
-        public Factory(string name, double rawmaterial, Organisation organisationRelated)
-        {
-            Name = name;
-            RawMaterial = rawmaterial;
-            OrganisationRelated = organisationRelated;
-            Employees = new List<Employee>();
-            OrdersConducted = new List<ChocolateOrder>();
-        }
+
 
         /// <summary>
         /// Takes as parameteres the Store that is placing the order and the information about the chocolates to "extraxt" from the warehouse

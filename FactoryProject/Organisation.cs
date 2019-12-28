@@ -21,12 +21,31 @@ namespace FactoryProject
             set { name = value; }
         }
 
-        //private double moneyBalance;
-        //public double MoneyBalance
-        //{
-        //    get { return moneyBalance; }
-        //    set { moneyBalance = value; }
-        //}
+        private double moneyBalance;
+        public double MoneyBalance
+        {
+            get 
+            {
+                double profit = 0;
+                foreach (var factory in Factories)
+                {
+                    profit -= factory.Expenses;
+                }
+                foreach (var store in Stores)
+                {
+                    profit += store.Income;
+                }
+
+                return moneyBalance + profit;
+            }
+
+            private set
+            {
+                moneyBalance = value;
+            }
+
+           
+        }
         public Organisation(string name)
         {
             Name = name;
@@ -36,12 +55,18 @@ namespace FactoryProject
             Suppliers = new List<Supplier>();
         }
 
-        //public void NewRawMaterialOrder(Factory factoryRelated)
-        //{
-        //    //reference of supplier should be saved in activecontract if needed
-        //    // factoryRelated.RawMaterial +=
+        public Contract ProduceContract(Factory factoryRequesting)
+        {
+            List<RawMaterialOffer> offers = RequestOffers();
 
-        //}
+            RawMaterialOffer offerForContract = BestOffer(offers);
+
+            return new Contract(offerForContract, this, offerForContract.SupplierRelated, factoryRequesting, DateTime.Now);
+        }
+        public List<RawMaterialOffer> RequestOffers()
+        {
+            return null;
+        }
         public static RawMaterialOffer BestOffer(List<RawMaterialOffer> offers)
 
         {

@@ -8,13 +8,13 @@ namespace FactoryProject
 {
     class RawMaterialOrder
     {
-        private int id;
+        //private int id;
 
-        public int ID
-        {
-            get { return id; }
-            set { id = value; }
-        }
+        //public int ID
+        //{
+        //    get { return id; }
+        //    set { id = value; }
+        //}
         private double rawMaterial;
         public double RawMaterial
         {

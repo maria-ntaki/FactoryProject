@@ -32,41 +32,44 @@ namespace FactoryProject
 			set { companyWork = value; }
 		}
 
-		private List<RawMaterialOffer> offers;
-		private List<Contract> conductedContracts;
+		public List<RawMaterialOffer> Offers { get; set; }
+		public List<Contract> ConductedContracts { get; set; }
 
 
 		public Supplier(string firstName, string lastName,string companyWork)
 		{
-			offers = new List<RawMaterialOffer>();
-			conductedContracts = new List<Contract>();
+			Offers = new List<RawMaterialOffer>();
+			ConductedContracts = new List<Contract>();
 
 			FirstName = firstName;
 			LastName = lastName;
 			CompanyWork = companyWork;
 		}
 
-		public RawMaterialOrder OrderMaterial(double quantity ,double price)
-		{
-			//New Order Material
-			RawMaterialOrder newOrder = new RawMaterialOrder(quantity, price);
-			return newOrder;
-		}
-		public ChocolateOrder OrderChocolate(List<Chocolate> chocolates,ChocoBuyers buyer)
-		{
-			//New Order Chocolate
-			ChocolateOrder newOrder = new ChocolateOrder(chocolates, this, buyer);
-			return newOrder;
-		}
-		public void MakeContract()
-    {
-    }
+		//public RawMaterialOrder OrderMaterial(double quantity ,double price)
+		//{
+		//	//New Order Material
+		//	RawMaterialOrder newOrder = new RawMaterialOrder(quantity, price);
+		//	return newOrder;
+		//}
+		//public ChocolateOrder OrderChocolate(List<Chocolate> chocolates, IChocoBuyers buyer)
+		//{
+		//	//New Order Chocolate
+		//	ChocolateOrder newOrder = new ChocolateOrder(chocolates, this, buyer);
+		//	return newOrder;
+		//}
 
-		public void CreateOffer()
+
+		public RawMaterialOffer CreateOffer()
 		{
 			//Create an Offer
-			RawMaterialOffer newoffer = new RawMaterialOffer(500,100,100,this);
-			offers.Add(newoffer);
+			Random selector = new Random();
+
+			RawMaterialOffer newoffer = new RawMaterialOffer(selector.Next(2,4), selector.Next(51, 300),this);
+
+			Offers.Add(newoffer);
+
+			return newoffer;
 		}		 
 	}
 }
