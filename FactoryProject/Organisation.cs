@@ -36,12 +36,12 @@ namespace FactoryProject
             Suppliers = new List<Supplier>();
         }
 
-        public void NewRawMaterialOrder(Factory factoryRelated)
-        {
-            //reference of supplier should be saved in activecontract if needed
-            // factoryRelated.RawMaterial +=
+        //public void NewRawMaterialOrder(Factory factoryRelated)
+        //{
+        //    //reference of supplier should be saved in activecontract if needed
+        //    // factoryRelated.RawMaterial +=
 
-        }
+        //}
         public static RawMaterialOffer BestOffer(List<RawMaterialOffer> offers)
 
         {

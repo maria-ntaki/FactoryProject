@@ -46,7 +46,6 @@
     <Compile Include="ChocolateOrder.cs" />
     <Compile Include="IChocoBuyers.cs" />
     <Compile Include="Chocolate.cs" />
-    <Compile Include="ChocoWareHouse.cs" />
     <Compile Include="Contract.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />

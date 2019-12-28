@@ -18,8 +18,8 @@ namespace FactoryProject
 
         public List<Employee> Employees { get; set; }
         public Organisation OrganisationRelated { get; set; }
-        public List<Chocolate> ChocolateWarehouse { get; set; } //Chocolate Warehouse
         public Contract ActiveContract { get; set; } //Contract to reference or resupply
+        public List<Chocolate> ChocolatesStock { get; set; }
         public List<Contract> RegisteredContracts { get; set; } //Contracts record
         public List<ChocolateOrder> OrdersConducted { get; set; }
         private double rawMaterial;
@@ -50,8 +50,18 @@ namespace FactoryProject
             }
         }
 
-
-        public double Expenses { get; set; }
+        private double expenses;
+        public double Expenses
+        { 
+            get
+            {
+                return expenses;
+            }
+            set
+            {
+                expenses = value;
+            }
+        }
 
         public Factory(string name, double rawmaterial, Organisation organisationRelated)
         {
@@ -59,7 +69,6 @@ namespace FactoryProject
             RawMaterial = rawmaterial;
             OrganisationRelated = organisationRelated;
             Employees = new List<Employee>();
-            ChocolateWarehouse = new List<Chocolate>();
             OrdersConducted = new List<ChocolateOrder>();
         }
 
@@ -96,27 +105,27 @@ namespace FactoryProject
             List<Chocolate> chocolatesList = new List<Chocolate>();//Creating the list that we will use to create the returning chocolate order
 
             //Querying the values from warehouse to create lists
-            var almondChocolates = (from c in ChocolateWarehouse
+            var almondChocolates = (from c in ChocolatesStock
                                     where c.ChocolateKind == Kind.Almond
                                     orderby c.DateProduced ascending
                                     select c).Take(almondChocos);
 
-            var whiteChocolates = (from c in ChocolateWarehouse
+            var whiteChocolates = (from c in ChocolatesStock
                                    where c.ChocolateKind == Kind.White
                                    orderby c.DateProduced ascending
                                    select c).Take(whiteChocos);
 
-            var darkChocolates = (from c in ChocolateWarehouse
+            var darkChocolates = (from c in ChocolatesStock
                                   where c.ChocolateKind == Kind.Dark
                                   orderby c.DateProduced ascending
                                   select c).Take(darkChocos);
 
-            var peanutChocolates = (from c in ChocolateWarehouse
+            var peanutChocolates = (from c in ChocolatesStock
                                     where c.ChocolateKind == Kind.Peanut
                                     orderby c.DateProduced ascending
                                     select c).Take(peanutChocos);
 
-            var milkChocolates = (from c in ChocolateWarehouse
+            var milkChocolates = (from c in ChocolatesStock
                                   where c.ChocolateKind == Kind.Milk
                                   orderby c.DateProduced ascending
                                   select c).Take(milkChocos);
@@ -124,31 +133,31 @@ namespace FactoryProject
             foreach (var item in almondChocolates)
             {
                 chocolatesList.Add(item); //Adding selected values to our list
-                ChocolateWarehouse.Remove(item);//Removing them from warehouse
+                ChocolatesStock.Remove(item);//Removing them from warehouse
             }
 
             foreach (var item in whiteChocolates)
             {
                 chocolatesList.Add(item);
-                ChocolateWarehouse.Remove(item);
+                ChocolatesStock.Remove(item);
             }
 
             foreach (var item in darkChocolates)
             {
                 chocolatesList.Add(item);
-                ChocolateWarehouse.Remove(item);
+                ChocolatesStock.Remove(item);
             }
 
             foreach (var item in peanutChocolates)
             {
                 chocolatesList.Add(item);
-                ChocolateWarehouse.Remove(item);
+                ChocolatesStock.Remove(item);
             }
 
             foreach (var item in milkChocolates)
             {
                 chocolatesList.Add(item);
-                ChocolateWarehouse.Remove(item);
+                ChocolatesStock.Remove(item);
             }
 
             ChocolateOrder newOrder = new ChocolateOrder(chocolatesList, this, storeRelated);
@@ -170,35 +179,35 @@ namespace FactoryProject
             {
                 Chocolate darkCholate = new Chocolate(Kind.Dark, DateTime.Now);
                 RawMaterial -= 0.15;
-                ChocolateWarehouse.Add(darkCholate);
+                ChocolatesStock.Add(darkCholate);
             }
 
             for (int i = 0; i < white; i++)
             {
                 Chocolate whiteChocolate = new Chocolate(Kind.White, DateTime.Now);
                 RawMaterial -= 0.2;
-                ChocolateWarehouse.Add(whiteChocolate);
+                ChocolatesStock.Add(whiteChocolate);
             }
 
             for (int i = 0; i < milk; i++)
             {
                 Chocolate milkChocolate = new Chocolate(Kind.Milk, DateTime.Now);
                 RawMaterial -= 0.25;
-                ChocolateWarehouse.Add(milkChocolate);
+                ChocolatesStock.Add(milkChocolate);
             }
 
             for (int i = 0; i < almond; i++)
             {
                 Chocolate almondChocolate = new Chocolate(Kind.Almond, DateTime.Now);
                 RawMaterial -= 0.22;
-                ChocolateWarehouse.Add(almondChocolate);
+                ChocolatesStock.Add(almondChocolate);
             }
 
             for (int i = 0; i < peanut; i++)
             {
                 Chocolate peanutChocolate = new Chocolate(Kind.Peanut, DateTime.Now);
                 RawMaterial -= 0.26;
-                ChocolateWarehouse.Add(peanutChocolate);
+                ChocolatesStock.Add(peanutChocolate);
             }
         }
 
@@ -206,6 +215,21 @@ namespace FactoryProject
         {
             rawMaterial += ActiveContract.RelatedOffer.RawMaterialAmount;//Contract holds the "transaction" data to be transfered
             Expenses += ActiveContract.RelatedOffer.PricePerKilo;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb
+                .AppendLine($"Factory name: {Name}")
+                .AppendLine($"Employees Count: {Employees.Count}")
+                .AppendLine($"Owner: {OrganisationRelated.Name}")
+                .AppendLine($"Contract end date: {ActiveContract.EndDate}")
+                .AppendLine($"Contract supplier: {ActiveContract.SupplierRelated.FirstName + " " + ActiveContract.SupplierRelated.LastName}")
+                .AppendLine($"Chocolates in stock: {ChocolatesStock.Count}")
+                .AppendLine($"Contracts conducted: {RegisteredContracts.Count}");
+
+            return sb.ToString();
         }
 
     }

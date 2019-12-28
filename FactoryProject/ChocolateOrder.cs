@@ -11,7 +11,6 @@ namespace FactoryProject
         public List<Chocolate> Chocolates { get; set; }
         public IWorkplace Seller { get; set; }
         public IChocoBuyers Buyer { get; set; }
-        private double totalPrice;
         public double TotalPrice
         {
             get
