@@ -31,7 +31,7 @@ namespace FactoryProject
             OrdersConducted = new List<ChocolateOrder>();
             RegisteredContracts = new List<Contract>();
             ChocolatesStock = new List<Chocolate>();
-            ActiveContract = organisationRelated.ProduceContract(this);
+            //ActiveContract = organisationRelated.ProduceContract(this);
         }
         private double rawMaterial;
         public double RawMaterial
@@ -52,7 +52,7 @@ namespace FactoryProject
                 }
                 else if (value < 1000) //1000 represent 10% of 10000 -> thats when resupplying is made, incresing amount and expenses as well
                 {
-                    Resuplpy();
+                    Resupply();
                 }
                 else
                 {
@@ -177,7 +177,7 @@ namespace FactoryProject
             RegisteredContracts.Add(newContract);
         }
 
-        public void ProduceChoocolate(int dark, int white, int milk, int almond, int peanut)
+        public void ProduceChocolate(int dark, int white, int milk, int almond, int peanut)
         {
             for (int i = 0; i < dark; i++)
             {
@@ -215,7 +215,7 @@ namespace FactoryProject
             }
         }
 
-        public void Resuplpy()
+        public void Resupply()
         {
             rawMaterial += ActiveContract.RelatedOffer.RawMaterialAmount;//Contract holds the "transaction" data to be transfered
             Expenses += ActiveContract.RelatedOffer.PricePerKilo;
