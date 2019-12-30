@@ -15,7 +15,7 @@ namespace FactoryProject
             get { return name; }
             set { name = value; }
         }
-
+         
         public List<Employee> Employees { get; set; }
         public Organisation OrganisationRelated { get; set; }
         public Contract ActiveContract { get; set; } //Contract to reference or resupply
