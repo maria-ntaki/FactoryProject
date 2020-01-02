@@ -12,19 +12,22 @@ namespace FactoryProject
         public Organisation OrganisationRelated { get; set; }
         public Supplier SupplierRelated { get; set; }
         public Factory FactoryRelated { get; set; }
-
-        private DateTime startDate;
-        public DateTime StartDate
-        {
-            get { return startDate; }
-            set { startDate = value; }
-        }
-
-
+        public DateTime StartDate { get; set; }
         public DateTime EndDate
         {
-            get { return startDate.AddYears(1); }
+            get { return StartDate.AddYears(1); }
         }
+        public bool IsActive
+        {
+            get
+            {
+                if (DateTime.Now > EndDate)
+                    return false;
+                else
+                    return true;
+            }
+        }
+
         public Contract(RawMaterialOffer offer, Organisation organisation, Supplier supplier, Factory factoryRelated, DateTime startdate)
         {
             RelatedOffer = offer;

@@ -10,7 +10,8 @@ namespace FactoryProject
     {
 
 		private double pricePerKilo;
-		//sxolioz
+		private double quality;
+
 		public double PricePerKilo
 
 		{
@@ -20,9 +21,6 @@ namespace FactoryProject
 				pricePerKilo = value * (1 + quality / 100);
 			}
 		}
-
-		private double quality;
-
 		public double Quality //Quality is an indicator meaning price should be either a derivative or influenced by it
 		{
 			get { return quality; }
@@ -31,22 +29,14 @@ namespace FactoryProject
 				if ( value < 0 || value > 10)
 				{
 					Console.WriteLine("Quality indicator cannot exceed 10 or be less than 0");
-
-					
 				}
 				else
 					quality = value; 
 			}
 		}
-
-		private double rawMaterialAmount;
-
-		public double RawMaterialAmount
-		{
-			get { return rawMaterialAmount; }
-			set { rawMaterialAmount = value; }
-		}
+		public double RawMaterialAmount { get; set; }
 		public Supplier SupplierRelated { get; set; }
+		public bool IsActive {get; set;} = true;
 
 		public RawMaterialOffer(double price, double amount, Supplier supplierRelated)
 		{
@@ -54,6 +44,7 @@ namespace FactoryProject
 			PricePerKilo = price;
 			RawMaterialAmount = amount; //in units
 			SupplierRelated = supplierRelated;
+			IsActive = true;
 		}
 	}
 }

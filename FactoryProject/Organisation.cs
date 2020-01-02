@@ -10,42 +10,11 @@ namespace FactoryProject
     {
         public List<Factory> Factories { get; set; }
         public List<Store> Stores { get; set; }
-        public List<Contract> ContractsConducted { get; set; }
         public List<Supplier> Suppliers { get; set; }
+        public string Name { get; set; }
+        public Balance MoneyBalance { get; set; }
+        public List<RawMaterialOffer> Offers {get; set;}
 
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        private double moneyBalance;
-        public double MoneyBalance
-        {
-            get 
-            {
-                double profit = 0;
-                foreach (var factory in Factories)
-                {
-                    profit -= factory.Expenses;
-                }
-                foreach (var store in Stores)
-                {
-                    profit += store.Income;
-                }
-
-                return moneyBalance + profit;
-            }
-
-            private set
-            {
-                moneyBalance = value;
-            }
-
-           
-        }
         public Organisation(string name)
         {
             Name = name;
@@ -53,22 +22,34 @@ namespace FactoryProject
             Stores = new List<Store>();
             ContractsConducted = new List<Contract>();
             Suppliers = new List<Supplier>();
+            MoneyBalance = new Balance(10000); //starting funds inside the parenthesis
         }
-
-        public Contract ProduceContract(Factory factoryRequesting)
+        
+        public void ProduceContract(Factory factory)
         {
-            List<RawMaterialOffer> offers = RequestOffers();
-
-            RawMaterialOffer offerForContract = BestOffer(offers);
-
-            return new Contract(offerForContract, this, offerForContract.SupplierRelated, factoryRequesting, DateTime.Now);
+            //Chosing all active offers
+            var activeOffers = new List<RawMaterialOffer>(){};
+            foreach (var offer in Offers)
+	        {
+                if (offer == null)
+                    continue;
+                if (offer.IsActive == true)
+                {
+                    offer.IsActive == false;
+                    activeOffers.Add(offer);
+                }
+	        }
+            if (activeOffers == null)
+                Console.WriteLine("No active offers available.");
+            //chosing best offer
+            RawMaterialOffer bestOffer = BestOffer(activeOffers);
+            //creating contract depending on an offer
+            Contract newContract = new Contract(bestOffer, this, bestOffer.SupplierRelated, factory, DateTime.Now);
+            //adding contract to a factory
+            factory.ActiveContract = newContract;
         }
-        public List<RawMaterialOffer> RequestOffers()
-        {
-            return null;
-        }
+
         public static RawMaterialOffer BestOffer(List<RawMaterialOffer> offers)
-
         {
             List<double> quality = new List<double>() { };
             List<double> price = new List<double>() { };
@@ -100,8 +81,20 @@ namespace FactoryProject
             //chosing the best offer based on score
             int indexBestOffer = gradesOfOffers.IndexOf(gradesOfOffers.Max());
             return offers[indexBestOffer];
-
-
         }
+
+        public void CheckContracts()
+        {
+            foreach (var factory in Factories)
+	        {
+                if (factory.ActiveContract.EndDate > DateTime.Now.AddMonths(-1))
+                {
+                    
+                }
+            }
+
+	
+        }
+
     }
 }
