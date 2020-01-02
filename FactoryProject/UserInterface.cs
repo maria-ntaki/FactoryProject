@@ -92,11 +92,11 @@ namespace FactoryProject
                         break;
 
                     case "3":
-                        relatedFactory.Resuplpy();
+                        relatedFactory.Resupply();
                         break;
 
                     case "4":
-                        relatedFactory.ProduceChoocolate(50, 50, 50, 50, 50);
+                        relatedFactory.ProduceChocolate(50, 50, 50, 50, 50);
                         break;
 
                     default:

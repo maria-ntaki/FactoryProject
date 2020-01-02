@@ -12,6 +12,15 @@ namespace FactoryProject
     {
         public Kind ChocolateKind { get; set; }
         public DateTime DateProduced { get; set; }
+
+        private DateTime expDate;
+
+        public DateTime ExpDate
+        {
+            get { return expDate; }
+            private set { expDate = DateProduced.AddYears(1); }
+        }
+
         //public double Price 
         //{ 
         //    get

@@ -15,7 +15,7 @@ namespace FactoryProject
             get { return name; }
             set { name = value; }
         }
-
+         
         public List<Employee> Employees { get; set; }
         public Organisation OrganisationRelated { get; set; }
         public Contract ActiveContract { get; set; } //Contract to reference or resupply
@@ -31,7 +31,7 @@ namespace FactoryProject
             OrdersConducted = new List<ChocolateOrder>();
             RegisteredContracts = new List<Contract>();
             ChocolatesStock = new List<Chocolate>();
-            ActiveContract = organisationRelated.ProduceContract(this);
+            //ActiveContract = organisationRelated.ProduceContract(this);
         }
         private double rawMaterial;
         public double RawMaterial
@@ -52,7 +52,7 @@ namespace FactoryProject
                 }
                 else if (value < 1000) //1000 represent 10% of 10000 -> thats when resupplying is made, incresing amount and expenses as well
                 {
-                    Resuplpy();
+                    Resupply();
                 }
                 else
                 {
@@ -109,60 +109,19 @@ namespace FactoryProject
             List<Chocolate> chocolatesList = new List<Chocolate>();//Creating the list that we will use to create the returning chocolate order
 
             //Querying the values from warehouse to create lists
-            var almondChocolates = (from c in ChocolatesStock
-                                    where c.ChocolateKind == Kind.Almond
-                                    orderby c.DateProduced ascending
-                                    select c).Take(almondChocos);
+            List<Chocolate> darkCholatesFromWarehouse = ChocolateExtractionFromStock(darkChocos, Kind.Dark);
+            List<Chocolate> whiteCholatesFromWarehouse = ChocolateExtractionFromStock(whiteChocos, Kind.White);
+            List<Chocolate> milkCholatesFromWarehouse = ChocolateExtractionFromStock(milkChocos, Kind.Milk);
+            List<Chocolate> peanutCholatesFromWarehouse = ChocolateExtractionFromStock(peanutChocos, Kind.Peanut);
+            List<Chocolate> almondCholatesFromWarehouse = ChocolateExtractionFromStock(almondChocos, Kind.Almond);
 
-            var whiteChocolates = (from c in ChocolatesStock
-                                   where c.ChocolateKind == Kind.White
-                                   orderby c.DateProduced ascending
-                                   select c).Take(whiteChocos);
+            chocolatesList = AddRemoveChocolates(darkCholatesFromWarehouse, chocolatesList);
+            chocolatesList = AddRemoveChocolates(whiteCholatesFromWarehouse, chocolatesList);
+            chocolatesList = AddRemoveChocolates(milkCholatesFromWarehouse, chocolatesList);
+            chocolatesList = AddRemoveChocolates(peanutCholatesFromWarehouse, chocolatesList);
+            chocolatesList = AddRemoveChocolates(almondCholatesFromWarehouse, chocolatesList);
 
-            var darkChocolates = (from c in ChocolatesStock
-                                  where c.ChocolateKind == Kind.Dark
-                                  orderby c.DateProduced ascending
-                                  select c).Take(darkChocos);
 
-            var peanutChocolates = (from c in ChocolatesStock
-                                    where c.ChocolateKind == Kind.Peanut
-                                    orderby c.DateProduced ascending
-                                    select c).Take(peanutChocos);
-
-            var milkChocolates = (from c in ChocolatesStock
-                                  where c.ChocolateKind == Kind.Milk
-                                  orderby c.DateProduced ascending
-                                  select c).Take(milkChocos);
-
-            foreach (var item in almondChocolates)
-            {
-                chocolatesList.Add(item); //Adding selected values to our list
-                ChocolatesStock.Remove(item);//Removing them from warehouse
-            }
-
-            foreach (var item in whiteChocolates)
-            {
-                chocolatesList.Add(item);
-                ChocolatesStock.Remove(item);
-            }
-
-            foreach (var item in darkChocolates)
-            {
-                chocolatesList.Add(item);
-                ChocolatesStock.Remove(item);
-            }
-
-            foreach (var item in peanutChocolates)
-            {
-                chocolatesList.Add(item);
-                ChocolatesStock.Remove(item);
-            }
-
-            foreach (var item in milkChocolates)
-            {
-                chocolatesList.Add(item);
-                ChocolatesStock.Remove(item);
-            }
 
             ChocolateOrder newOrder = new ChocolateOrder(chocolatesList, this, storeRelated);
             OrdersConducted.Add(newOrder);
@@ -171,13 +130,32 @@ namespace FactoryProject
 
         }
 
+        private List<Chocolate> ChocolateExtractionFromStock(int chocolateAmount, Kind chocoKind)
+        {
+            List<Chocolate> extractedChocolates = (from c in ChocolatesStock
+                                                   where c.ChocolateKind == chocoKind
+                                                   orderby c.DateProduced ascending
+                                                   select c).Take(chocolateAmount).ToList();
+            return extractedChocolates;
+        }
+
+        private List<Chocolate> AddRemoveChocolates(List<Chocolate> warehouseChocolateQuery, List<Chocolate> chocolatesToShip)
+        {
+            foreach (var item in warehouseChocolateQuery)
+            {
+                chocolatesToShip.Add(item);
+                ChocolatesStock.Remove(item);
+            }
+            return chocolatesToShip;
+        }
+
         public void UpdateContract(Contract newContract)
         {
             ActiveContract = newContract;
             RegisteredContracts.Add(newContract);
         }
 
-        public void ProduceChoocolate(int dark, int white, int milk, int almond, int peanut)
+        public void ProduceChocolate(int dark, int white, int milk, int almond, int peanut)
         {
             for (int i = 0; i < dark; i++)
             {
@@ -215,7 +193,7 @@ namespace FactoryProject
             }
         }
 
-        public void Resuplpy()
+        public void Resupply()
         {
             rawMaterial += ActiveContract.RelatedOffer.RawMaterialAmount;//Contract holds the "transaction" data to be transfered
             Expenses += ActiveContract.RelatedOffer.PricePerKilo;
