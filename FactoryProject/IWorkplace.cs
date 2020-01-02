@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace FactoryProject
 {
-    class ChocoWareHouse
+    interface IWorkplace
     {
-        public List<Chocolate> ChocolateStored { get; set; }
-        
+        string Name { get; set; }
     }
 }

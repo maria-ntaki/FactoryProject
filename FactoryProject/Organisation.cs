@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    class Organisation : IWorkplaces
+    class Organisation 
     {
         public List<Factory> Factories { get; set; }
         public List<Store> Stores { get; set; }
-        public List<Contract> ActiveContract { get; set; }
+        public List<Contract> ContractsConducted { get; set; }
+        public List<Supplier> Suppliers { get; set; }
 
         private string name;
 
@@ -23,27 +24,51 @@ namespace FactoryProject
         private double moneyBalance;
         public double MoneyBalance
         {
-            get { return moneyBalance; }
-            set { moneyBalance = value; }
+            get 
+            {
+                double profit = 0;
+                foreach (var factory in Factories)
+                {
+                    profit -= factory.Expenses;
+                }
+                foreach (var store in Stores)
+                {
+                    profit += store.Income;
+                }
+
+                return moneyBalance + profit;
+            }
+
+            private set
+            {
+                moneyBalance = value;
+            }
+
+           
         }
-        public Organisation(string name, double moneybalance)
+        public Organisation(string name)
         {
             Name = name;
-            MoneyBalance = moneybalance;
+            Factories = new List<Factory>();
+            Stores = new List<Store>();
+            ContractsConducted = new List<Contract>();
+            Suppliers = new List<Supplier>();
         }
-        public void NewChocolateOrder(Store storeRelated)
-        {
-            // storeRelate.chocolates.Add();
 
-            MoneyBalance--;
+        public Contract ProduceContract(Factory factoryRequesting)
+        {
+            List<RawMaterialOffer> offers = RequestOffers();
+
+            RawMaterialOffer offerForContract = BestOffer(offers);
+
+            return new Contract(offerForContract, this, offerForContract.SupplierRelated, factoryRequesting, DateTime.Now);
         }
-        public void NewRawMaterialOrder(Factory factoryRelated)
+        public List<RawMaterialOffer> RequestOffers()
         {
-            //reference of supplier should be saved in activecontract if needed
-            // factoryRelated.RawMaterial +=
-
+            return null;
         }
         public static RawMaterialOffer BestOffer(List<RawMaterialOffer> offers)
+
         {
             List<double> quality = new List<double>() { };
             List<double> price = new List<double>() { };
@@ -55,8 +80,8 @@ namespace FactoryProject
             foreach (var offer in offers)
             {
                 quality.Add(offer.Quality);
-                price.Add(Math.Pow(offer.Price, -1));
-                quantity.Add(Math.Pow(offer.Quantity, -1));
+                price.Add(Math.Pow(offer.PricePerKilo, -1));
+                quantity.Add(Math.Pow(offer.RawMaterialAmount, -1));
             }
             //finding max values
             maxPrice = price.Max();

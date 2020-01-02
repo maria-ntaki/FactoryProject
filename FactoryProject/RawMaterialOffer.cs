@@ -8,9 +8,11 @@ namespace FactoryProject
 {
     class RawMaterialOffer
     {
+
 		private double pricePerKilo;
 		//sxolioz
 		public double PricePerKilo
+
 		{
 			get { return pricePerKilo; }
 			set
@@ -29,26 +31,28 @@ namespace FactoryProject
 				if ( value < 0 || value > 10)
 				{
 					Console.WriteLine("Quality indicator cannot exceed 10 or be less than 0");
+
+					
 				}
 				else
 					quality = value; 
 			}
 		}
 
-		private double amount;
+		private double rawMaterialAmount;
 
-		public double Amount
+		public double RawMaterialAmount
 		{
-			get { return amount; }
-			set { amount = value; }
+			get { return rawMaterialAmount; }
+			set { rawMaterialAmount = value; }
 		}
 		public Supplier SupplierRelated { get; set; }
 
-		public RawMaterialOffer(double price, double quality, double amount, Supplier supplierRelated)
+		public RawMaterialOffer(double price, double amount, Supplier supplierRelated)
 		{
 			Quality = quality;
 			PricePerKilo = price;
-			Amount = amount; //in units
+			RawMaterialAmount = amount; //in units
 			SupplierRelated = supplierRelated;
 		}
 	}

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FactoryProject
 {
-    interface IWorkplaces
+    interface IChocoBuyers
     {
-        string Name { get; set; }
+        string Name { get; }
     }
 }

@@ -20,21 +20,18 @@ namespace FactoryProject
             set { startDate = value; }
         }
 
-        private DateTime endDate;
 
         public DateTime EndDate
         {
-            get { return endDate; }
-            set { endDate = startDate.AddYears(1); }
+            get { return startDate.AddYears(1); }
         }
-        public Contract(RawMaterialOffer offer, Organisation organisation, Supplier supplier, Factory factoryRelated, DateTime startdate, DateTime enddate)
+        public Contract(RawMaterialOffer offer, Organisation organisation, Supplier supplier, Factory factoryRelated, DateTime startdate)
         {
             RelatedOffer = offer;
             OrganisationRelated = organisation;
-            SupplierRelated = supplier;
-            StartDate = startdate;
-            EndDate = DateTime.Now;
+            SupplierRelated = offer.SupplierRelated;
             FactoryRelated = factoryRelated;
+            StartDate = startdate;
         }
     }
 }
