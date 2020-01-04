@@ -14,6 +14,7 @@ namespace FactoryProject
         public string Name { get; set; }
         public Balance MoneyBalance { get; set; }
         public List<RawMaterialOffer> Offers {get; set;}
+        public List<Contract> ContractsConducted { get; set; }
 
         public Organisation(string name)
         {
