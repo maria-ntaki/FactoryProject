@@ -31,7 +31,7 @@ namespace FactoryProject
             OrdersConducted = new List<ChocolateOrder>();
             RegisteredContracts = new List<Contract>();
             ChocolatesStock = new List<Chocolate>();
-            //ActiveContract = organisationRelated.ProduceContract(this);
+            ActiveContract = organisationRelated.ProduceContract(this);
         }
         private double rawMaterial;
         public double RawMaterial

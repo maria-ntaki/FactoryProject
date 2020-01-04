@@ -70,6 +70,21 @@ namespace FactoryProject
 			Offers.Add(newoffer);
 
 			return newoffer;
-		}		 
+		}
+
+		public override string ToString()
+		{
+			StringBuilder sb = new StringBuilder();
+
+			sb
+				.AppendLine($"First Name: {FirstName}")
+				.AppendLine($"Last Name: {LastName}")
+				.AppendLine($"Company Name: {CompanyWork}")
+				.AppendLine($"Company Name: {CompanyWork}")
+				.AppendLine($"Total offers: {Offers}")
+				.AppendLine($"Total Contracts: {ConductedContracts}");
+
+			return sb.ToString();
+		}
 	}
 }

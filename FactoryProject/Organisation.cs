@@ -26,28 +26,17 @@ namespace FactoryProject
             MoneyBalance = new Balance(10000); //starting funds inside the parenthesis
         }
         
-        public void ProduceContract(Factory factory)
+        public Contract ProduceContract(Factory factory)
         {
-            //Chosing all active offers
-            var activeOffers = new List<RawMaterialOffer>(){};
-            foreach (var offer in Offers)
-	        {
-                if (offer == null)
-                    continue;
-                if (offer.IsActive == true)
-                {
-                    offer.IsActive == false;
-                    activeOffers.Add(offer);
-                }
-	        }
-            if (activeOffers == null)
-                Console.WriteLine("No active offers available.");
+            //Generating a list of offers from all curent suppliers
+            List<RawMaterialOffer> offers = RequestOffers();
+
             //chosing best offer
-            RawMaterialOffer bestOffer = BestOffer(activeOffers);
+            RawMaterialOffer bestOffer = BestOffer(offers);
             //creating contract depending on an offer
             Contract newContract = new Contract(bestOffer, this, bestOffer.SupplierRelated, factory, DateTime.Now);
             //adding contract to a factory
-            factory.ActiveContract = newContract;
+            return newContract;
         }
 
         public static RawMaterialOffer BestOffer(List<RawMaterialOffer> offers)
@@ -84,17 +73,34 @@ namespace FactoryProject
             return offers[indexBestOffer];
         }
 
-        public void CheckContracts()
+        private List<RawMaterialOffer> RequestOffers()
         {
-            foreach (var factory in Factories)
-	        {
-                if (factory.ActiveContract.EndDate > DateTime.Now.AddMonths(-1))
-                {
-                    
-                }
+            List<RawMaterialOffer> offers = new List<RawMaterialOffer>();
+
+            foreach (var supplier in Suppliers)
+            {
+                RawMaterialOffer newOffer = supplier.CreateOffer();
+                offers.Add(newOffer);
+                Offers.Add(newOffer);
             }
 
-	
+            return offers;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb
+                .AppendLine($"Name: {Name}")
+                .AppendLine($"Balanace: {MoneyBalance.Value}")
+                .AppendLine($"Factories: {Factories.Count}")
+                .AppendLine($"Stores: {Stores.Count}")
+                .AppendLine($"RawMaterial offers: {Offers.Count}")
+                .AppendLine($"Contracts: {ContractsConducted.Count}")
+                .AppendLine($"Contracts: {ContractsConducted.Count}");
+
+            return sb.ToString();
         }
 
     }

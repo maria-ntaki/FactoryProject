@@ -8,20 +8,20 @@ namespace FactoryProject
 {
     class Balance
     {
-        public float HardValue { get; private set; }
-        public Balance(float hardValue)
+        public double Value { get; private set; }
+        public Balance(double initialValue)
         {
-            HardValue = hardValue;
+            Value = initialValue;
         }
 
 
         public void AddCash(float ammount)
         {
-            HardValue += ammount;
+            Value += ammount;
         }
         public void SubCash(float ammount)
         {
-            HardValue -= ammount;
+            Value -= ammount;
         }
     }
 }

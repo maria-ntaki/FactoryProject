@@ -80,5 +80,17 @@ namespace FactoryProject
             return newOrder;
 
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb
+                .AppendLine($"Full Name: {Name}")
+                .AppendLine($"Total expenses: {TotalExpenses}")
+                .AppendLine($"Total Orders: {ChocoOrders}");
+
+            return sb.ToString();
+        }
     }
 }

@@ -27,6 +27,8 @@ namespace FactoryProject
             StoreOwner = owner;
             Employees = new List<Employee>();
             Chocolates = new List<Chocolate>();
+            Transactions = new List<ChocolateOrder>();
+            Customers = new List<Customer>();
         }
 
         public void ResupplyChocolate(Factory factoryRelated)
