@@ -52,6 +52,7 @@ namespace FactoryProject
             //Loop every list you produced and populate a new list with each item, while also removing it from the stock
             //Use the produced list to create an order which you store on the Transactions list of the store, to keep track of the income aswell
 
+
             int darkChocos = 0;
             int whiteChocos = 0;
             int milkChocos = 0;
@@ -71,6 +72,10 @@ namespace FactoryProject
                 else //(ChocolateKind == Kind.Almond)
                     almondChocos += 1;
             }
+
+             //Before starting to take chocolates from the list of chocolates, we check if any of them is expired
+             DeleteExpiredChocolatesInStore();
+            
 
             var almondChocolates = (from c in Chocolates
                                     where c.ChocolateKind == Kind.Almond
@@ -145,6 +150,17 @@ namespace FactoryProject
 
             Income += newOrder.TotalPrice;
 
+        }
+
+        private void DeleteExpiredChocolatesInStore()
+        {
+            foreach(var chocolate in Chocolates)
+            {
+                  if(chocolate.CheckIfExpired())
+                {
+                    ChocolatesStock.Remove(item);
+                }
+            }
         }
     }
 }

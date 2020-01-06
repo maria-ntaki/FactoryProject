@@ -102,5 +102,15 @@ namespace FactoryProject
             return chocolates;
         }
 
+        public bool CheckIfExpired()
+        {
+            bool isExpired = false;
+            if (ExpDate >= DateTime.Now)
+            {
+                isExpired = true;
+            }
+            return isExpired;
+        }
+
     }
 }

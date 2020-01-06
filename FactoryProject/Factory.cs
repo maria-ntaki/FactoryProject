@@ -108,6 +108,9 @@ namespace FactoryProject
             
             List<Chocolate> chocolatesList = new List<Chocolate>();//Creating the list that we will use to create the returning chocolate order
 
+            //Before starting to take chocolates from chocolate Stock, we check if any of them is expired
+            DeleteExpiredChocolatesInFactory();
+
             //Querying the values from warehouse to create lists
             List<Chocolate> darkCholatesFromWarehouse = ChocolateExtractionFromStock(darkChocos, Kind.Dark);
             List<Chocolate> whiteCholatesFromWarehouse = ChocolateExtractionFromStock(whiteChocos, Kind.White);
@@ -143,10 +146,23 @@ namespace FactoryProject
         {
             foreach (var item in warehouseChocolateQuery)
             {
+
                 chocolatesToShip.Add(item);
                 ChocolatesStock.Remove(item);
+
             }
             return chocolatesToShip;
+        }
+
+        private void DeleteExpiredChocolatesInFactory()
+        {
+            foreach(var chocolate in ChocolatesStock)
+            {
+                  if(chocolate.CheckIfExpired())
+                {
+                    ChocolatesStock.Remove(item);
+                }
+            }
         }
 
         public void UpdateContract(Contract newContract)
