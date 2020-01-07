@@ -158,7 +158,7 @@ namespace FactoryProject
             {
                   if(chocolate.CheckIfExpired())
                 {
-                    Chocolates.Remove(chocolate);
+                    Chocolates.Remove(chocolate); 
                 }
             }
         }
