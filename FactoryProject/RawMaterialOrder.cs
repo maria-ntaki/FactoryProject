@@ -9,7 +9,7 @@ namespace FactoryProject
     class RawMaterialOrder
     {
         //private int id;
-
+        //
         //public int ID
         //{
         //    get { return id; }

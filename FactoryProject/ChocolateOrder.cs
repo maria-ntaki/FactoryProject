@@ -8,6 +8,8 @@ namespace FactoryProject
 {
     class ChocolateOrder
     {
+        //ed
+        
         public List<Chocolate> Chocolates { get; set; }
         public IWorkplace Seller { get; set; }
         public IChocoBuyers Buyer { get; set; }
