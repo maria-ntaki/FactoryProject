@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace FactoryProject
 {
     class Factory : IWorkplace
+    //Just a comment
+    class Factory
+
     {
         private string name;
 
