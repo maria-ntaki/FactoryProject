@@ -15,6 +15,7 @@ namespace FactoryProject
         //    get { return id; }
         //    set { id = value; }
         //}
+        //
         private double rawMaterial;
         public double RawMaterial
         {
