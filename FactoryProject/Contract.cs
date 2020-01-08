@@ -8,31 +8,33 @@ namespace FactoryProject
 {
     class Contract
     {
-        public Offer ChosenOffer { get; set; }
+        public RawMaterialOffer RelatedOffer { get; set; }
         public Organisation OrganisationRelated { get; set; }
         public Supplier SupplierRelated { get; set; }
-
-        private DateTime startDate;
-        public DateTime StartDate
-        {
-            get { return startDate; }
-            set { startDate = value; }
-        }
-
-        private DateTime endDate;
-
+        public Factory FactoryRelated { get; set; }
+        public DateTime StartDate { get; set; }
         public DateTime EndDate
         {
-            get { return endDate; }
-            set { endDate = value; }
+            get { return StartDate.AddYears(1); }
         }
-        public Contract(Offer offer, Organisation organisation, Supplier supplier, DateTime startdate, DateTime enddate)
+        public bool IsActive
         {
-            ChosenOffer = offer;
+            get
+            {
+                if (DateTime.Now > EndDate)
+                    return false;
+                else
+                    return true;
+            }
+        }
+
+        public Contract(RawMaterialOffer offer, Organisation organisation, Supplier supplier, Factory factoryRelated, DateTime startdate)
+        {
+            RelatedOffer = offer;
             OrganisationRelated = organisation;
-            SupplierRelated = supplier;
+            SupplierRelated = offer.SupplierRelated;
+            FactoryRelated = factoryRelated;
             StartDate = startdate;
-            EndDate = enddate;
         }
     }
 }
