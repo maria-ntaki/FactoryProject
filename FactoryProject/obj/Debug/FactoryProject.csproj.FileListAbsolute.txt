@@ -1,0 +1,6 @@
+C:\GitHub\FactoryProject\FactoryProject\obj\Debug\FactoryProject.csprojAssemblyReference.cache
+C:\GitHub\FactoryProject\FactoryProject\bin\Debug\FactoryProject.exe.config
+C:\GitHub\FactoryProject\FactoryProject\bin\Debug\FactoryProject.exe
+C:\GitHub\FactoryProject\FactoryProject\bin\Debug\FactoryProject.pdb
+C:\GitHub\FactoryProject\FactoryProject\obj\Debug\FactoryProject.exe
+C:\GitHub\FactoryProject\FactoryProject\obj\Debug\FactoryProject.pdb
